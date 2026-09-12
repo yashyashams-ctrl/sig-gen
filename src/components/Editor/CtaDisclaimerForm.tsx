@@ -49,7 +49,7 @@ export const CtaDisclaimerForm: React.FC<Props> = ({
                 className="text-input"
                 value={cta.buttonText}
                 onChange={(e) => onCtaChange('buttonText', e.target.value)}
-                placeholder="Schedule a Call"
+                placeholder="e.g. 📅 Schedule a Meeting"
               />
             </div>
 
@@ -61,7 +61,7 @@ export const CtaDisclaimerForm: React.FC<Props> = ({
                 className="text-input"
                 value={cta.buttonUrl}
                 onChange={(e) => onCtaChange('buttonUrl', e.target.value)}
-                placeholder="https://calendly.com/your-name"
+                placeholder="e.g. https://calendly.com/johndoe"
               />
             </div>
 

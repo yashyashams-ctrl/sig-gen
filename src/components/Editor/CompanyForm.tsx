@@ -24,7 +24,7 @@ export const CompanyForm: React.FC<Props> = ({ data, onChange }) => {
             className="text-input"
             value={data.companyName}
             onChange={(e) => onChange('companyName', e.target.value)}
-            placeholder="e.g. Acme Corp"
+            placeholder="e.g. FAXOLIF Industries"
           />
         </div>
 
@@ -36,7 +36,7 @@ export const CompanyForm: React.FC<Props> = ({ data, onChange }) => {
             className="text-input"
             value={data.tagline}
             onChange={(e) => onChange('tagline', e.target.value)}
-            placeholder="e.g. Building the Future"
+            placeholder="e.g. Leading Industrial Solutions"
           />
         </div>
 
@@ -48,7 +48,7 @@ export const CompanyForm: React.FC<Props> = ({ data, onChange }) => {
             className="text-input"
             value={data.website}
             onChange={(e) => onChange('website', e.target.value)}
-            placeholder="e.g. https://example.com"
+            placeholder="e.g. https://faxolif.com"
           />
         </div>
 
@@ -60,7 +60,7 @@ export const CompanyForm: React.FC<Props> = ({ data, onChange }) => {
             className="text-input"
             value={data.office}
             onChange={(e) => onChange('office', e.target.value)}
-            placeholder="e.g. Suite 200"
+            placeholder="e.g. Building A"
           />
         </div>
 
@@ -72,7 +72,7 @@ export const CompanyForm: React.FC<Props> = ({ data, onChange }) => {
             className="text-input"
             value={data.address}
             onChange={(e) => onChange('address', e.target.value)}
-            placeholder="e.g. 123 Main St, New York, NY 10001"
+            placeholder="e.g. 100 Industrial Parkway, Suite 400"
           />
         </div>
       </div>

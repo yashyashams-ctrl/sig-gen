@@ -86,10 +86,10 @@ export const PRESET_BANNERS: { label: string; url: string; link: string }[] = []
 
 export const DEFAULT_SIGNATURE_DATA: SignatureData = {
   personal: {
-    fullName: 'Alexandra Morgan',
-    jobTitle: 'VP of Operations',
-    department: 'Corporate Division',
-    pronouns: 'she/her',
+    fullName: 'John Doe',
+    jobTitle: 'Product Manager',
+    department: 'Operations',
+    pronouns: 'he/him',
   },
   company: {
     companyName: 'FAXOLIF Industries',
@@ -99,9 +99,9 @@ export const DEFAULT_SIGNATURE_DATA: SignatureData = {
     office: 'Building A',
   },
   contact: {
-    email: 'alexandra.m@faxolif.com',
-    phoneWork: '+1 (212) 555-0198',
-    phoneMobile: '+1 (917) 555-8423',
+    email: 'john.doe@faxolif.com',
+    phoneWork: '+1 (555) 123-4567',
+    phoneMobile: '+1 (555) 987-6543',
   },
   images: {
     avatarUrl: '/avatar.svg',
@@ -114,19 +114,19 @@ export const DEFAULT_SIGNATURE_DATA: SignatureData = {
     bannerWidth: 380,
   },
   socials: {
-    linkedin: 'https://linkedin.com/company/faxolif',
-    twitter: 'https://x.com/faxolif',
-    github: 'https://github.com/faxolif',
+    linkedin: 'https://linkedin.com/in/johndoe',
+    twitter: 'https://x.com/johndoe',
+    github: 'https://github.com/johndoe',
     instagram: '',
     facebook: '',
     youtube: '',
-    whatsapp: '+19175558423',
-    calendly: 'https://calendly.com/faxolif',
+    whatsapp: '+15559876543',
+    calendly: 'https://calendly.com/johndoe',
   },
   cta: {
     showCta: true,
     buttonText: '📅 Schedule a Meeting',
-    buttonUrl: 'https://calendly.com/faxolif',
+    buttonUrl: 'https://calendly.com/johndoe',
     bgColor: '#0061A4',
     textColor: '#ffffff',
   },

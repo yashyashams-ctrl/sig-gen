@@ -24,7 +24,7 @@ export const ContactForm: React.FC<Props> = ({ data, onChange }) => {
             className="text-input"
             value={data.email}
             onChange={(e) => onChange('email', e.target.value)}
-            placeholder="e.g. john.doe@example.com"
+            placeholder="e.g. john.doe@faxolif.com"
           />
         </div>
 
