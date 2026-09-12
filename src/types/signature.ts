@@ -69,6 +69,9 @@ export interface SignatureData {
     mutedColor: string;
     fontFamily: string;
     fontSizeScale: FontSizeScale;
+    customFontScale: number; // e.g. 80 - 140 (%)
+    socialIconSize: number; // e.g. 14 - 28 (px)
+    contactIconSize: number; // e.g. 11 - 20 (px)
     iconStyle: IconStyle;
   };
 }

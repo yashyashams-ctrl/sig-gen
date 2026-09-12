@@ -85,7 +85,7 @@ export const InstructionsModal: React.FC<Props> = ({ isOpen, onClose }) => {
                 <div className="step-badge">Method 1 (Standard)</div>
                 <ol className="steps-list">
                   <li>
-                    Click <strong>"Copy Signature (for Outlook & Gmail)"</strong> in SigGen.
+                    Click <strong>"Copy Signature (for Outlook & Gmail)"</strong> in ProSignature.
                   </li>
                   <li>
                     In Outlook, click <strong>File</strong> &gt; <strong>Options</strong> &gt; <strong>Mail</strong>.
@@ -110,7 +110,7 @@ export const InstructionsModal: React.FC<Props> = ({ isOpen, onClose }) => {
                 <div className="step-badge">Method 2 (Direct Folder - 100% Exact HTML)</div>
                 <ol className="steps-list">
                   <li>
-                    Click <strong>"Download .html"</strong> in SigGen and save as <code>MySignature.htm</code>.
+                    Click <strong>"Download .html"</strong> in ProSignature and save as <code>MySignature.htm</code>.
                   </li>
                   <li>
                     Press <kbd>Win</kbd> + <kbd>R</kbd>, paste <code>%appdata%\Microsoft\Signatures</code> and hit <strong>Enter</strong>.
@@ -132,7 +132,7 @@ export const InstructionsModal: React.FC<Props> = ({ isOpen, onClose }) => {
               <h4>Installing in Outlook Web / Microsoft 365</h4>
               <ol className="steps-list">
                 <li>
-                  Click <strong>"Copy Signature (for Outlook & Gmail)"</strong> in SigGen.
+                  Click <strong>"Copy Signature (for Outlook & Gmail)"</strong> in ProSignature.
                 </li>
                 <li>
                   Go to <a href="https://outlook.office.com" target="_blank" rel="noreferrer">outlook.office.com</a> or <a href="https://outlook.live.com" target="_blank" rel="noreferrer">outlook.live.com</a>.
@@ -162,7 +162,7 @@ export const InstructionsModal: React.FC<Props> = ({ isOpen, onClose }) => {
               <h4>Installing in Google Workspace / Gmail Desktop</h4>
               <ol className="steps-list">
                 <li>
-                  Click <strong>"Copy Signature (for Outlook & Gmail)"</strong> in SigGen.
+                  Click <strong>"Copy Signature (for Outlook & Gmail)"</strong> in ProSignature.
                 </li>
                 <li>
                   In Gmail, click the <strong>Gear icon</strong> (top-right) and click <strong>"See all settings"</strong>.
@@ -192,7 +192,7 @@ export const InstructionsModal: React.FC<Props> = ({ isOpen, onClose }) => {
               <h4>Installing in Microsoft Outlook for Mac</h4>
               <ol className="steps-list">
                 <li>
-                  Click <strong>"Copy Signature (for Outlook & Gmail)"</strong> in SigGen.
+                  Click <strong>"Copy Signature (for Outlook & Gmail)"</strong> in ProSignature.
                 </li>
                 <li>
                   In Outlook for Mac, click the <strong>Outlook</strong> menu (top-left) &gt; <strong>Settings...</strong> (or Preferences).

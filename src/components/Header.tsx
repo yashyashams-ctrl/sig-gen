@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, RotateCcw, HelpCircle, FileJson, Sparkles } from 'lucide-react';
+import { RotateCcw, HelpCircle, FileJson, Sparkles } from 'lucide-react';
 
 interface Props {
   onReset: () => void;
@@ -19,15 +19,19 @@ export const Header: React.FC<Props> = ({
       <div className="header-container">
         {/* Brand */}
         <div className="header-brand">
-          <div className="brand-logo-mark">
-            <Mail size={18} strokeWidth={2.2} />
-          </div>
+          <img
+            src="/site-logo.svg"
+            alt="ProSignature Logo"
+            width="32"
+            height="32"
+            style={{ borderRadius: '8px', display: 'block', flexShrink: 0 }}
+          />
           <div className="brand-text-block">
             <div className="brand-title-wrap">
-              <h1 className="brand-name">SigGen</h1>
+              <h1 className="brand-name">ProSignature</h1>
               <span className="brand-pill">Outlook &amp; Gmail</span>
             </div>
-            <span className="brand-tagline">Email Signature Engine</span>
+            <span className="brand-tagline">Professional Signature Studio</span>
           </div>
         </div>
 

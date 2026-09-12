@@ -56,6 +56,17 @@ const FONT_SCALES: Record<FontSizeScale, { name: number; title: number; body: nu
   large: { name: 19, title: 14, body: 13, small: 12 },
 };
 
+function getFontScales(data: SignatureData) {
+  const base = FONT_SCALES[data.style.fontSizeScale || 'normal'] || FONT_SCALES.normal;
+  const pct = (data.style.customFontScale ?? 100) / 100;
+  return {
+    name: Math.max(10, Math.round(base.name * pct)),
+    title: Math.max(9, Math.round(base.title * pct)),
+    body: Math.max(8, Math.round(base.body * pct)),
+    small: Math.max(7, Math.round(base.small * pct)),
+  };
+}
+
 function getBorderRadius(shape: SignatureData['images']['avatarShape']): string {
   switch (shape) {
     case 'circle':
@@ -93,6 +104,7 @@ function renderCtaButton(data: SignatureData, font: string): string {
 // Generate Social Media Icon Links Row
 function renderSocials(data: SignatureData, iconSet: typeof ICONS.colored): string {
   const links: { name: string; url: string; icon: string }[] = [];
+  const iconSize = data.style.socialIconSize || 18;
 
   const addIfValid = (key: keyof SignatureData['socials'], name: string, icon: string) => {
     const raw = data.socials[key];
@@ -122,7 +134,7 @@ function renderSocials(data: SignatureData, iconSet: typeof ICONS.colored): stri
             (item) => `
           <td style="padding-right: 6px; vertical-align: middle;">
             <a href="${item.url}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: inline-block;">
-              <img src="${item.icon}" alt="${item.name}" width="18" height="18" border="0" style="display: block; width: 18px; max-width: 18px; height: 18px; border: 0; outline: none; -ms-interpolation-mode: bicubic;" />
+              <img src="${item.icon}" alt="${item.name}" width="${iconSize}" height="${iconSize}" border="0" style="display: block; width: ${iconSize}px; max-width: ${iconSize}px; height: ${iconSize}px; border: 0; outline: none; -ms-interpolation-mode: bicubic;" />
             </a>
           </td>`
           )
@@ -187,8 +199,9 @@ function generateCorporateTemplate(data: SignatureData): string {
   const primary = data.style.primaryColor;
   const text = data.style.textColor;
   const muted = data.style.mutedColor;
-  const scales = FONT_SCALES[data.style.fontSizeScale];
+  const scales = getFontScales(data);
   const iconSet = getIconSet(data.style.iconStyle, primary);
+  const contactIconSize = data.style.contactIconSize || 13;
   const borderRadius = getBorderRadius(data.images.avatarShape);
   const avatarSize = data.images.avatarSize || 80;
   const hasAvatar = !!data.images.avatarUrl;
@@ -236,7 +249,7 @@ function generateCorporateTemplate(data: SignatureData): string {
             ${data.contact.phoneWork ? `
             <tr>
               <td style="padding-right: 6px; padding-bottom: 3px; vertical-align: middle;">
-                <img src="${iconSet.phone}" alt="Phone" width="13" height="13" border="0" style="display: block; width: 13px; height: 13px;" />
+                <img src="${iconSet.phone}" alt="Phone" width="${contactIconSize}" height="${contactIconSize}" border="0" style="display: block; width: ${contactIconSize}px; height: ${contactIconSize}px;" />
               </td>
               <td style="padding-bottom: 3px; font-family: ${font}; vertical-align: middle;">
                 <a href="tel:${data.contact.phoneWork.replace(/[^0-9+]/g, '')}" style="color: ${text}; text-decoration: none;">${data.contact.phoneWork}</a>
@@ -246,7 +259,7 @@ function generateCorporateTemplate(data: SignatureData): string {
             ${data.contact.phoneMobile ? `
             <tr>
               <td style="padding-right: 6px; padding-bottom: 3px; vertical-align: middle;">
-                <img src="${iconSet.mobile}" alt="Mobile" width="13" height="13" border="0" style="display: block; width: 13px; height: 13px;" />
+                <img src="${iconSet.mobile}" alt="Mobile" width="${contactIconSize}" height="${contactIconSize}" border="0" style="display: block; width: ${contactIconSize}px; height: ${contactIconSize}px;" />
               </td>
               <td style="padding-bottom: 3px; font-family: ${font}; vertical-align: middle;">
                 <a href="tel:${data.contact.phoneMobile.replace(/[^0-9+]/g, '')}" style="color: ${text}; text-decoration: none;">${data.contact.phoneMobile}</a>
@@ -256,7 +269,7 @@ function generateCorporateTemplate(data: SignatureData): string {
             ${data.contact.email ? `
             <tr>
               <td style="padding-right: 6px; padding-bottom: 3px; vertical-align: middle;">
-                <img src="${iconSet.email}" alt="Email" width="13" height="13" border="0" style="display: block; width: 13px; height: 13px;" />
+                <img src="${iconSet.email}" alt="Email" width="${contactIconSize}" height="${contactIconSize}" border="0" style="display: block; width: ${contactIconSize}px; height: ${contactIconSize}px;" />
               </td>
               <td style="padding-bottom: 3px; font-family: ${font}; vertical-align: middle;">
                 <a href="mailto:${data.contact.email}" style="color: ${text}; text-decoration: none; font-weight: 500;">${data.contact.email}</a>
@@ -266,7 +279,7 @@ function generateCorporateTemplate(data: SignatureData): string {
             ${data.company.website ? `
             <tr>
               <td style="padding-right: 6px; padding-bottom: 3px; vertical-align: middle;">
-                <img src="${iconSet.website}" alt="Website" width="13" height="13" border="0" style="display: block; width: 13px; height: 13px;" />
+                <img src="${iconSet.website}" alt="Website" width="${contactIconSize}" height="${contactIconSize}" border="0" style="display: block; width: ${contactIconSize}px; height: ${contactIconSize}px;" />
               </td>
               <td style="padding-bottom: 3px; font-family: ${font}; vertical-align: middle;">
                 <a href="${data.company.website.startsWith('http') ? data.company.website : 'https://' + data.company.website}" target="_blank" rel="noopener noreferrer" style="color: ${primary}; text-decoration: none; font-weight: 600;">${data.company.website.replace(/^https?:\/\//, '')}</a>
@@ -276,7 +289,7 @@ function generateCorporateTemplate(data: SignatureData): string {
             ${data.company.address ? `
             <tr>
               <td style="padding-right: 6px; padding-bottom: 3px; vertical-align: middle;">
-                <img src="${iconSet.marker}" alt="Location" width="13" height="13" border="0" style="display: block; width: 13px; height: 13px;" />
+                <img src="${iconSet.marker}" alt="Location" width="${contactIconSize}" height="${contactIconSize}" border="0" style="display: block; width: ${contactIconSize}px; height: ${contactIconSize}px;" />
               </td>
               <td style="padding-bottom: 3px; font-family: ${font}; font-size: ${scales.small}px; color: ${muted}; vertical-align: middle;">
                 ${data.company.address}${data.company.office ? ' (' + data.company.office + ')' : ''}
@@ -301,7 +314,7 @@ function generateExecutiveTemplate(data: SignatureData): string {
   const primary = data.style.primaryColor;
   const text = data.style.textColor;
   const muted = data.style.mutedColor;
-  const scales = FONT_SCALES[data.style.fontSizeScale];
+  const scales = getFontScales(data);
   const iconSet = getIconSet(data.style.iconStyle, primary);
   const borderRadius = getBorderRadius(data.images.avatarShape);
   const avatarSize = data.images.avatarSize || 75;
@@ -372,7 +385,7 @@ function generateModernSplitTemplate(data: SignatureData): string {
   const secondary = data.style.secondaryColor;
   const text = data.style.textColor;
   const muted = data.style.mutedColor;
-  const scales = FONT_SCALES[data.style.fontSizeScale];
+  const scales = getFontScales(data);
   const iconSet = getIconSet(data.style.iconStyle, primary);
   const borderRadius = getBorderRadius(data.images.avatarShape);
   const avatarSize = data.images.avatarSize || 90;
@@ -460,7 +473,7 @@ function generateCreativeCardTemplate(data: SignatureData): string {
   const primary = data.style.primaryColor;
   const text = data.style.textColor;
   const muted = data.style.mutedColor;
-  const scales = FONT_SCALES[data.style.fontSizeScale];
+  const scales = getFontScales(data);
   const iconSet = getIconSet(data.style.iconStyle, primary);
   const borderRadius = getBorderRadius(data.images.avatarShape);
   const avatarSize = data.images.avatarSize || 80;
@@ -526,7 +539,7 @@ function generateCompactTemplate(data: SignatureData): string {
   const primary = data.style.primaryColor;
   const text = data.style.textColor;
   const muted = data.style.mutedColor;
-  const scales = FONT_SCALES[data.style.fontSizeScale];
+  const scales = getFontScales(data);
   const iconSet = getIconSet(data.style.iconStyle, primary);
   const borderRadius = getBorderRadius(data.images.avatarShape);
   const avatarSize = Math.min(data.images.avatarSize || 55, 60);
@@ -593,5 +606,5 @@ export function generateSignatureHtml(data: SignatureData): string {
   }
 
   // Clean and wrap
-  return `<!-- START SIGGEN EMAIL SIGNATURE -->\n${innerHtml.trim()}\n<!-- END SIGGEN EMAIL SIGNATURE -->`;
+  return `<!-- START PROSIGNATURE EMAIL SIGNATURE -->\n${innerHtml.trim()}\n<!-- END PROSIGNATURE EMAIL SIGNATURE -->`;
 }

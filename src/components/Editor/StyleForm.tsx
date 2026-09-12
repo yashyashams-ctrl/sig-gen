@@ -138,10 +138,10 @@ export const StyleForm: React.FC<Props> = ({ data, onChange }) => {
         </select>
       </div>
 
-      {/* Font Size & Icon Style */}
+      {/* Font Size Scaling & Icon Style */}
       <div className="form-grid-2col" style={{ marginTop: '14px' }}>
         <div className="form-group">
-          <label>Font Scale</label>
+          <label>Preset Font Scale</label>
           <div className="segmented-toggle">
             {(['compact', 'normal', 'large'] as FontSizeScale[]).map((scale) => (
               <button
@@ -157,7 +157,29 @@ export const StyleForm: React.FC<Props> = ({ data, onChange }) => {
         </div>
 
         <div className="form-group">
-          <label>Icon Style</label>
+          <div className="label-with-value">
+            <label htmlFor="fontScaleSlider">Text Size Fine-Tuning</label>
+            <span className="val-text">{data.customFontScale || 100}%</span>
+          </div>
+          <input
+            id="fontScaleSlider"
+            type="range"
+            min="80"
+            max="140"
+            step="5"
+            value={data.customFontScale || 100}
+            onChange={(e) => onChange('customFontScale', Number(e.target.value))}
+            className="clean-range-slider"
+          />
+        </div>
+      </div>
+
+      <div className="subtle-divider" />
+
+      {/* Icon Styling & Sizing Controls */}
+      <div className="form-grid-2col" style={{ marginTop: '14px' }}>
+        <div className="form-group">
+          <label>Icon Style Theme</label>
           <div className="segmented-toggle">
             {(['colored', 'dark', 'brand'] as IconStyle[]).map((style) => (
               <button
@@ -170,6 +192,40 @@ export const StyleForm: React.FC<Props> = ({ data, onChange }) => {
               </button>
             ))}
           </div>
+        </div>
+
+        <div className="form-group">
+          <div className="label-with-value">
+            <label htmlFor="socialIconSizeSlider">Social Icon Size</label>
+            <span className="val-text">{data.socialIconSize || 18}px</span>
+          </div>
+          <input
+            id="socialIconSizeSlider"
+            type="range"
+            min="14"
+            max="28"
+            step="1"
+            value={data.socialIconSize || 18}
+            onChange={(e) => onChange('socialIconSize', Number(e.target.value))}
+            className="clean-range-slider"
+          />
+        </div>
+
+        <div className="form-group">
+          <div className="label-with-value">
+            <label htmlFor="contactIconSizeSlider">Contact Line Icon Size</label>
+            <span className="val-text">{data.contactIconSize || 13}px</span>
+          </div>
+          <input
+            id="contactIconSizeSlider"
+            type="range"
+            min="11"
+            max="20"
+            step="1"
+            value={data.contactIconSize || 13}
+            onChange={(e) => onChange('contactIconSize', Number(e.target.value))}
+            className="clean-range-slider"
+          />
         </div>
       </div>
     </div>

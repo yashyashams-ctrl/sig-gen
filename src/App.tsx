@@ -153,6 +153,9 @@ export const App: React.FC = () => {
           mutedColor: '#73777F',
           fontFamily: 'Arial, Helvetica, sans-serif',
           fontSizeScale: 'normal',
+          customFontScale: 100,
+          socialIconSize: 18,
+          contactIconSize: 13,
           iconStyle: 'colored',
         },
       });
