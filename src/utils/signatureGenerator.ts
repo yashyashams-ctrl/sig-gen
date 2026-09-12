@@ -194,13 +194,13 @@ function generateCorporateTemplate(data: SignatureData): string {
     <table cellpadding="0" cellspacing="0" border="0" style="background: none; border-collapse: collapse; margin: 0; padding: 0; font-family: ${font};">
       <tr>
         ${hasAvatar || hasLogo ? `
-        <td valign="top" width="${leftColWidth}" style="vertical-align: top; padding: 0 16px 0 0; width: ${leftColWidth}px; max-width: ${leftColWidth}px;">
+        <td valign="top" align="center" width="${leftColWidth}" style="vertical-align: top; padding: 0 16px 0 0; width: ${leftColWidth}px; max-width: ${leftColWidth}px; text-align: center;">
           ${hasAvatar ? `
-          <img src="${data.images.avatarUrl}" alt="${data.personal.fullName}" width="${avatarSize}" height="${avatarSize}" border="0" style="display: block; width: ${avatarSize}px; max-width: ${avatarSize}px; height: ${avatarSize}px; border-radius: ${borderRadius}; border: 0; outline: none; -ms-interpolation-mode: bicubic;" />
+          <img src="${data.images.avatarUrl}" alt="${data.personal.fullName}" width="${avatarSize}" height="${avatarSize}" border="0" style="display: block; width: ${avatarSize}px; max-width: ${avatarSize}px; height: ${avatarSize}px; border-radius: ${borderRadius}; border: 0; outline: none; margin: 0 auto; -ms-interpolation-mode: bicubic;" />
           ` : ''}
           ${hasLogo ? `
           <div style="height: ${hasAvatar ? '10px' : '0px'}; line-height: ${hasAvatar ? '10px' : '0px'}; font-size: 1px;">&nbsp;</div>
-          <img src="${data.images.logoUrl}" alt="${data.company.companyName}" width="${logoWidth}" border="0" style="display: block; width: ${logoWidth}px; max-width: ${logoWidth}px; height: auto; border: 0; outline: none; -ms-interpolation-mode: bicubic;" />
+          <img src="${data.images.logoUrl}" alt="${data.company.companyName}" width="${logoWidth}" border="0" style="display: block; width: ${logoWidth}px; max-width: ${logoWidth}px; height: auto; border: 0; outline: none; margin: 0 auto; -ms-interpolation-mode: bicubic;" />
           ` : ''}
         </td>
         <td width="2" style="width: 2px; min-width: 2px; background-color: ${primary}; font-size: 1px; line-height: 1px; padding: 0;">&nbsp;</td>

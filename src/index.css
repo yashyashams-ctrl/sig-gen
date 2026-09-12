@@ -44,7 +44,7 @@
   --md-sys-color-error: #BA1A1A;
   --md-sys-color-on-error: #FFFFFF;
   --md-sys-color-error-container: #FFDAD6;
-  --md-sys-color-on-error-container: #410002;
+  --md-sys-color-on-error-container: #410E0B;
 
   --md-sys-color-outline: #73777F;
   --md-sys-color-outline-variant: #C3C7D0;
@@ -53,15 +53,15 @@
   --md-sys-color-success-container: #92FAAE;
   --md-sys-color-on-success-container: #00210C;
 
-  /* Organic Radius Token Hierarchy */
-  --md-radius-xs: 8px;      /* Chips, small elements */
-  --md-radius-sm: 12px;     /* Small cards, inputs top corners */
-  --md-radius-md: 16px;     /* Default cards */
-  --md-radius-lg: 24px;     /* Prominent containers, feature cards */
-  --md-radius-xl: 28px;     /* Dialogs, sheets */
-  --md-radius-2xl: 32px;    /* Hero containers */
-  --md-radius-3xl: 48px;    /* Extra large section cards */
-  --md-radius-full: 9999px; /* Pill buttons, badges, chips */
+  /* Refined, Sleek Border Radius Hierarchy (Reduced Roundness) */
+  --md-radius-xs: 4px;      /* Small chips, badges */
+  --md-radius-sm: 8px;      /* Inputs top corners, small elements */
+  --md-radius-md: 10px;     /* Default cards, buttons */
+  --md-radius-lg: 14px;     /* Prominent containers & section cards */
+  --md-radius-xl: 16px;     /* Dialogs, modals, preview frames */
+  --md-radius-2xl: 20px;    /* Hero containers */
+  --md-radius-3xl: 24px;    /* Section cards */
+  --md-radius-full: 20px;   /* Sleek rounded buttons & badges */
 
   /* Elevation Shadows */
   --md-elevation-0: none;
@@ -145,7 +145,7 @@ button:active, .interactive-card:active {
 
 ::-webkit-scrollbar-thumb {
   background: var(--md-sys-color-outline-variant);
-  border-radius: var(--md-radius-full);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {

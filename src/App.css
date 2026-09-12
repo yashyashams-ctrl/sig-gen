@@ -1,5 +1,6 @@
 /* ==========================================================================
    SIGGEN - MATERIAL YOU (MATERIAL DESIGN 3) STYLING SYSTEM
+   REFINED BORDER RADIUS SCALE (Sleek, Crisp Edges)
    ========================================================================== */
 
 .sig-app-layout {
@@ -12,7 +13,7 @@
 }
 
 /* ==========================================================================
-   ATMOSPHERIC ORGANIC BLUR BACKDROP SHAPES (MD3 Signature)
+   ATMOSPHERIC ORGANIC BLUR BACKDROP SHAPES
    ========================================================================== */
 
 .bg-blur-container {
@@ -29,7 +30,7 @@
   left: -5%;
   width: 550px;
   height: 550px;
-  border-radius: var(--md-radius-full);
+  border-radius: 50%;
   background: radial-gradient(circle, var(--md-sys-color-primary-container) 0%, rgba(209, 228, 255, 0) 70%);
   filter: blur(80px);
   opacity: 0.7;
@@ -41,7 +42,7 @@
   right: -5%;
   width: 600px;
   height: 600px;
-  border-radius: var(--md-radius-full);
+  border-radius: 50%;
   background: radial-gradient(circle, var(--md-sys-color-secondary-container) 0%, rgba(215, 227, 248, 0) 70%);
   filter: blur(90px);
   opacity: 0.6;
@@ -53,7 +54,7 @@
   right: 25%;
   width: 400px;
   height: 400px;
-  border-radius: var(--md-radius-full);
+  border-radius: 50%;
   background: radial-gradient(circle, var(--md-sys-color-tertiary-container) 0%, rgba(242, 218, 255, 0) 70%);
   filter: blur(75px);
   opacity: 0.45;
@@ -91,9 +92,9 @@
 }
 
 .brand-logo-mark {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--md-radius-full);
+  width: 42px;
+  height: 42px;
+  border-radius: var(--md-radius-md);
   background-color: var(--md-sys-color-primary-container);
   color: var(--md-sys-color-primary);
   display: flex;
@@ -130,8 +131,8 @@
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.02em;
-  padding: 3px 10px;
-  border-radius: var(--md-radius-full);
+  padding: 2px 8px;
+  border-radius: var(--md-radius-xs);
   background-color: var(--md-sys-color-secondary-container);
   color: var(--md-sys-color-on-secondary-container);
 }
@@ -148,14 +149,14 @@
   gap: 10px;
 }
 
-/* Material You Pill Buttons */
+/* Material You Sleek Action Buttons */
 .nav-action-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 40px;
-  padding: 0 18px;
-  border-radius: var(--md-radius-full);
+  height: 38px;
+  padding: 0 16px;
+  border-radius: var(--md-radius-md);
   background-color: var(--md-sys-color-surface-container);
   color: var(--md-sys-color-on-surface-variant);
   font-size: 13px;
@@ -180,7 +181,7 @@
 
 .nav-divider {
   width: 1px;
-  height: 24px;
+  height: 22px;
   background-color: var(--md-sys-color-outline-variant);
   margin: 0 4px;
   opacity: 0.6;
@@ -260,8 +261,8 @@
   justify-content: space-between;
   gap: 12px;
   background-color: var(--md-sys-color-surface-container-low);
-  padding: 6px 12px;
-  border-radius: var(--md-radius-full);
+  padding: 6px 10px;
+  border-radius: var(--md-radius-md);
   border: 1px solid var(--md-sys-color-outline-variant);
   flex-wrap: wrap;
 }
@@ -277,9 +278,9 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  height: 36px;
+  height: 34px;
   padding: 0 14px;
-  border-radius: var(--md-radius-full);
+  border-radius: var(--md-radius-sm);
   font-size: 12px;
   font-weight: 500;
   color: var(--md-sys-color-on-surface-variant);
@@ -305,9 +306,9 @@
 }
 
 .carousel-arrow-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--md-radius-full);
+  width: 30px;
+  height: 30px;
+  border-radius: var(--md-radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -333,16 +334,16 @@
 }
 
 .step-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: var(--md-radius-full);
+  width: 7px;
+  height: 7px;
+  border-radius: 4px;
   background-color: var(--md-sys-color-outline-variant);
   cursor: pointer;
   transition: all var(--md-transition-fast);
 }
 
 .step-dot.is-active {
-  width: 18px;
+  width: 16px;
   background-color: var(--md-sys-color-primary);
 }
 
@@ -372,7 +373,7 @@
 .section-card {
   background-color: var(--md-sys-color-surface-container);
   border-radius: var(--md-radius-lg);
-  padding: 22px 24px;
+  padding: 20px 22px;
   border: 1px solid rgba(115, 119, 127, 0.12);
   box-shadow: var(--md-elevation-0);
   transition: all var(--md-transition-normal);
@@ -388,7 +389,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .section-title-wrap {
@@ -410,10 +411,10 @@
 }
 
 .count-label {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
-  padding: 2px 10px;
-  border-radius: var(--md-radius-full);
+  padding: 2px 8px;
+  border-radius: var(--md-radius-xs);
   background-color: var(--md-sys-color-secondary-container);
   color: var(--md-sys-color-on-secondary-container);
 }
@@ -425,15 +426,15 @@
 .template-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 10px;
 }
 
 .template-item-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 14px 16px;
-  min-height: 84px;
+  padding: 12px 14px;
+  min-height: 80px;
   border-radius: var(--md-radius-md);
   background-color: var(--md-sys-color-surface-container-lowest);
   border: 1px solid var(--md-sys-color-outline-variant);
@@ -481,9 +482,9 @@
 }
 
 .selected-indicator {
-  width: 18px;
-  height: 18px;
-  border-radius: var(--md-radius-full);
+  width: 16px;
+  height: 16px;
+  border-radius: var(--md-radius-xs);
   background-color: var(--md-sys-color-primary);
   color: var(--md-sys-color-on-primary);
   display: flex;
@@ -500,14 +501,14 @@
 }
 
 /* ==========================================================================
-   NAVIGATION SEGMENTED BAR (MD3 Pill Bar)
+   NAVIGATION SEGMENTED BAR
    ========================================================================== */
 
 .editor-nav-bar {
   display: flex;
   background-color: var(--md-sys-color-surface-container-low);
-  padding: 6px;
-  border-radius: var(--md-radius-full);
+  padding: 5px;
+  border-radius: var(--md-radius-md);
   gap: 4px;
   box-shadow: var(--md-elevation-0);
   border: 1px solid rgba(115, 119, 127, 0.1);
@@ -519,9 +520,9 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 42px;
-  padding: 0 14px;
-  border-radius: var(--md-radius-full);
+  height: 38px;
+  padding: 0 12px;
+  border-radius: var(--md-radius-sm);
   color: var(--md-sys-color-on-surface-variant);
   font-size: 13px;
   font-weight: 500;
@@ -565,7 +566,7 @@
   display: flex;
   background-color: var(--md-sys-color-surface-container-low);
   padding: 4px;
-  border-radius: var(--md-radius-full);
+  border-radius: var(--md-radius-md);
   gap: 4px;
   margin-bottom: 16px;
   border: 1px solid var(--md-sys-color-outline-variant);
@@ -576,9 +577,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 36px;
+  height: 34px;
   padding: 0 14px;
-  border-radius: var(--md-radius-full);
+  border-radius: var(--md-radius-sm);
   font-size: 12px;
   font-weight: 500;
   color: var(--md-sys-color-on-surface-variant);
@@ -599,8 +600,8 @@
 .nested-option-block {
   background-color: var(--md-sys-color-surface-container-low);
   border-radius: var(--md-radius-md);
-  padding: 16px 18px;
-  margin-bottom: 14px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
   border: 1px solid var(--md-sys-color-outline-variant);
 }
 
@@ -632,15 +633,15 @@
   height: 1px;
   background-color: var(--md-sys-color-outline-variant);
   opacity: 0.5;
-  margin: 16px 0;
+  margin: 14px 0;
 }
 
 /* Toggle Switches */
 .toggle-switch {
   position: relative;
   display: inline-block;
-  width: 46px;
-  height: 26px;
+  width: 44px;
+  height: 24px;
   flex-shrink: 0;
 }
 
@@ -656,19 +657,19 @@
   inset: 0;
   background-color: var(--md-sys-color-surface-container-highest);
   border: 2px solid var(--md-sys-color-outline);
-  border-radius: var(--md-radius-full);
+  border-radius: 12px;
   transition: all var(--md-transition-fast);
 }
 
 .toggle-slider::before {
   content: '';
   position: absolute;
-  height: 16px;
-  width: 16px;
+  height: 14px;
+  width: 14px;
   left: 3px;
   bottom: 3px;
   background-color: var(--md-sys-color-outline);
-  border-radius: var(--md-radius-full);
+  border-radius: 50%;
   transition: all var(--md-transition-fast);
 }
 
@@ -694,8 +695,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 12px;
-  border-radius: var(--md-radius-full);
+  padding: 6px 10px;
+  border-radius: var(--md-radius-sm);
   background-color: var(--md-sys-color-surface-container-low);
   border: 1px solid var(--md-sys-color-outline-variant);
   font-size: 12px;
@@ -717,9 +718,9 @@
 }
 
 .swatch-bubble {
-  width: 16px;
-  height: 16px;
-  border-radius: var(--md-radius-full);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.15);
   flex-shrink: 0;
 }
@@ -731,9 +732,9 @@
 }
 
 .color-picker-box {
-  width: 38px;
-  height: 38px;
-  border-radius: var(--md-radius-full);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--md-radius-sm);
   border: 2px solid var(--md-sys-color-outline-variant);
   cursor: pointer;
   padding: 0;
@@ -748,7 +749,7 @@
 
 .color-picker-box::-webkit-color-swatch {
   border: none;
-  border-radius: var(--md-radius-full);
+  border-radius: var(--md-radius-xs);
 }
 
 .hex-input {
@@ -763,13 +764,13 @@
 .form-grid-2col {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 14px;
 }
 
 .form-group, .form-field-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
   position: relative;
 }
 
@@ -786,25 +787,25 @@ label, .form-field-label {
   gap: 6px;
 }
 
-/* MD3 Filled Text Field Specification: Top rounded 12px, bottom 0, border bottom 2px */
+/* MD3 Filled Text Field Specification: Top rounded 8px, bottom 0, border bottom 2px */
 .text-input, .md-text-input, input[type="text"], input[type="email"], input[type="tel"], input[type="url"], textarea, select {
   width: 100%;
-  height: 48px;
-  padding: 0 16px;
+  height: 44px;
+  padding: 0 14px;
   background-color: var(--md-sys-color-surface-container-low);
   border: none;
   border-bottom: 2px solid var(--md-sys-color-outline);
   border-radius: var(--md-radius-sm) var(--md-radius-sm) 0 0;
   color: var(--md-sys-color-on-surface);
-  font-size: 14px;
+  font-size: 13px;
   font-family: var(--md-font-sans);
   transition: all var(--md-transition-fast);
 }
 
 textarea {
   height: auto;
-  min-height: 80px;
-  padding: 12px 16px;
+  min-height: 75px;
+  padding: 10px 14px;
   resize: vertical;
 }
 
@@ -830,7 +831,7 @@ textarea {
 
 .preview-card-frame {
   background-color: var(--md-sys-color-surface-container);
-  border-radius: var(--md-radius-xl);
+  border-radius: var(--md-radius-lg);
   border: 1px solid rgba(115, 119, 127, 0.12);
   box-shadow: var(--md-elevation-1);
   overflow: hidden;
@@ -839,7 +840,7 @@ textarea {
 }
 
 .preview-toolbar-row {
-  padding: 14px 20px;
+  padding: 12px 18px;
   background-color: var(--md-sys-color-surface-container-high);
   border-bottom: 1px solid rgba(115, 119, 127, 0.12);
   display: flex;
@@ -858,7 +859,7 @@ textarea {
 .live-indicator-dot {
   width: 8px;
   height: 8px;
-  border-radius: var(--md-radius-full);
+  border-radius: 50%;
   background-color: var(--md-sys-color-success);
   box-shadow: 0 0 8px var(--md-sys-color-success);
 }
@@ -881,7 +882,7 @@ textarea {
   display: flex;
   background-color: var(--md-sys-color-surface-container-low);
   padding: 3px;
-  border-radius: var(--md-radius-full);
+  border-radius: var(--md-radius-md);
   gap: 2px;
   border: 1px solid var(--md-sys-color-outline-variant);
 }
@@ -890,9 +891,9 @@ textarea {
   display: flex;
   align-items: center;
   gap: 6px;
-  height: 32px;
-  padding: 0 12px;
-  border-radius: var(--md-radius-full);
+  height: 30px;
+  padding: 0 10px;
+  border-radius: var(--md-radius-sm);
   font-size: 12px;
   font-weight: 500;
   color: var(--md-sys-color-on-surface-variant);
@@ -900,7 +901,7 @@ textarea {
 }
 
 .segmented-bar-btn.icon-only {
-  padding: 0 9px;
+  padding: 0 8px;
 }
 
 .segmented-bar-btn:hover {
@@ -921,15 +922,15 @@ textarea {
   align-items: center;
   gap: 4px;
   background-color: var(--md-sys-color-surface-container-low);
-  padding: 2px 8px;
-  border-radius: var(--md-radius-full);
+  padding: 2px 6px;
+  border-radius: var(--md-radius-md);
   border: 1px solid var(--md-sys-color-outline-variant);
 }
 
 .zoom-action-btn {
-  width: 26px;
-  height: 26px;
-  border-radius: var(--md-radius-full);
+  width: 24px;
+  height: 24px;
+  border-radius: var(--md-radius-xs);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -950,17 +951,17 @@ textarea {
   font-size: 11px;
   font-weight: 500;
   color: var(--md-sys-color-on-surface-variant);
-  min-width: 34px;
+  min-width: 32px;
   text-align: center;
 }
 
 /* Canvas Viewport */
 .canvas-viewport-wrap {
-  padding: 28px 20px;
+  padding: 24px 18px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-height: 380px;
+  min-height: 360px;
   overflow: auto;
   transition: background-color var(--md-transition-normal);
 }
@@ -1001,7 +1002,7 @@ textarea {
 .dot {
   width: 10px;
   height: 10px;
-  border-radius: var(--md-radius-full);
+  border-radius: 50%;
 }
 
 .dot-close { background-color: #FF5F56; }
@@ -1067,9 +1068,9 @@ textarea {
 .clean-phone-frame {
   width: 320px;
   background-color: #FFFFFF;
-  border-radius: 36px;
+  border-radius: 24px;
   box-shadow: var(--md-elevation-4);
-  border: 10px solid #1C1B1F;
+  border: 8px solid #1C1B1F;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1121,7 +1122,7 @@ textarea {
 .phone-avatar-mini {
   width: 32px;
   height: 32px;
-  border-radius: var(--md-radius-full);
+  border-radius: 50%;
   background-color: var(--md-sys-color-primary-container);
   color: var(--md-sys-color-on-primary-container);
   display: flex;
@@ -1172,25 +1173,25 @@ textarea {
 .tech-spec-badge {
   font-size: 11px;
   font-weight: 500;
-  padding: 3px 10px;
-  border-radius: var(--md-radius-full);
+  padding: 2px 8px;
+  border-radius: var(--md-radius-xs);
   background-color: var(--md-sys-color-surface-container-low);
   color: var(--md-sys-color-on-surface-variant);
   border: 1px solid var(--md-sys-color-outline-variant);
 }
 
 /* ==========================================================================
-   EXPORT TOOLBAR (MD3 Pill Actions)
+   EXPORT TOOLBAR
    ========================================================================== */
 
 .export-toolbar-card {
   background-color: var(--md-sys-color-surface-container);
   border-radius: var(--md-radius-lg);
-  padding: 18px 20px;
+  padding: 16px 18px;
   border: 1px solid rgba(115, 119, 127, 0.12);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .export-actions-grid {
@@ -1204,9 +1205,9 @@ textarea {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 44px;
-  padding: 0 18px;
-  border-radius: var(--md-radius-full);
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--md-radius-md);
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.01em;
@@ -1262,8 +1263,8 @@ textarea {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 16px;
-  border-radius: var(--md-radius-full);
+  padding: 8px 14px;
+  border-radius: var(--md-radius-md);
   background-color: var(--md-sys-color-on-surface);
   color: var(--md-sys-color-surface);
   font-size: 12px;
@@ -1277,7 +1278,7 @@ textarea {
 }
 
 /* ==========================================================================
-   MODALS & DIALOGS (MD3 Spec: 28px Radius & Elevated Backdrop)
+   MODALS & DIALOGS (Sleek 16px Radius)
    ========================================================================== */
 
 .modal-backdrop-overlay, .modal-overlay {
@@ -1305,18 +1306,18 @@ textarea {
   max-height: 85vh;
   background-color: var(--md-sys-color-surface-container-high);
   border-radius: var(--md-radius-xl);
-  padding: 28px;
+  padding: 24px;
   box-shadow: var(--md-elevation-4);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
   overflow: hidden;
   animation: scaleUp 250ms var(--md-easing-emphasized);
   border: 1px solid rgba(115, 119, 127, 0.15);
 }
 
 @keyframes scaleUp {
-  from { opacity: 0; transform: scale(0.92); }
+  from { opacity: 0; transform: scale(0.94); }
   to { opacity: 1; transform: scale(1); }
 }
 
@@ -1349,9 +1350,9 @@ textarea {
 }
 
 .dialog-close-btn, .btn-close-modal {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--md-radius-full);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--md-radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1368,7 +1369,7 @@ textarea {
   display: flex;
   background-color: var(--md-sys-color-surface-container-low);
   padding: 4px;
-  border-radius: var(--md-radius-full);
+  border-radius: var(--md-radius-md);
   gap: 4px;
   overflow-x: auto;
   border: 1px solid var(--md-sys-color-outline-variant);
@@ -1380,9 +1381,9 @@ textarea {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  height: 38px;
-  padding: 0 14px;
-  border-radius: var(--md-radius-full);
+  height: 34px;
+  padding: 0 12px;
+  border-radius: var(--md-radius-sm);
   font-size: 12px;
   font-weight: 500;
   color: var(--md-sys-color-on-surface-variant);
@@ -1421,7 +1422,7 @@ textarea {
 
 /* Setup Guide Accordions / Tabs inside Modal */
 .guide-step-card {
-  padding: 16px 20px;
+  padding: 14px 18px;
   border-radius: var(--md-radius-md);
   background-color: var(--md-sys-color-surface-container-low);
   border: 1px solid var(--md-sys-color-outline-variant);
@@ -1429,7 +1430,7 @@ textarea {
 
 .guide-step-title {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--md-sys-color-primary);
   margin-bottom: 6px;
 }
@@ -1437,7 +1438,7 @@ textarea {
 .guide-code-box {
   background-color: #1E1B2E;
   color: #EADDFF;
-  padding: 14px 16px;
+  padding: 12px 14px;
   border-radius: var(--md-radius-sm);
   font-family: var(--md-font-mono);
   font-size: 12px;

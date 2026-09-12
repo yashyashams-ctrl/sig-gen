@@ -24,7 +24,7 @@ export const Header: React.FC<Props> = ({
           </div>
           <div className="brand-text-block">
             <div className="brand-title-wrap">
-              <span className="brand-name">SigGen</span>
+              <h1 className="brand-name">SigGen</h1>
               <span className="brand-pill">Outlook &amp; Gmail</span>
             </div>
             <span className="brand-tagline">Email Signature Engine</span>
