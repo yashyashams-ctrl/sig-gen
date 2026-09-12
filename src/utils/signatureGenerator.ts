@@ -185,19 +185,22 @@ function generateCorporateTemplate(data: SignatureData): string {
   const iconSet = getIconSet(data.style.iconStyle, primary);
   const borderRadius = getBorderRadius(data.images.avatarShape);
   const avatarSize = data.images.avatarSize || 80;
-
   const hasAvatar = !!data.images.avatarUrl;
   const hasLogo = !!data.images.logoUrl;
+  const logoWidth = data.images.logoWidth || 140;
+  const leftColWidth = Math.max(hasAvatar ? avatarSize : 0, hasLogo ? logoWidth : 0);
 
   return `
     <table cellpadding="0" cellspacing="0" border="0" style="background: none; border-collapse: collapse; margin: 0; padding: 0; font-family: ${font};">
       <tr>
-        ${hasAvatar ? `
-        <td valign="top" style="vertical-align: top; padding: 0 16px 0 0;">
+        ${hasAvatar || hasLogo ? `
+        <td valign="top" width="${leftColWidth}" style="vertical-align: top; padding: 0 16px 0 0; width: ${leftColWidth}px; max-width: ${leftColWidth}px;">
+          ${hasAvatar ? `
           <img src="${data.images.avatarUrl}" alt="${data.personal.fullName}" width="${avatarSize}" height="${avatarSize}" border="0" style="display: block; width: ${avatarSize}px; max-width: ${avatarSize}px; height: ${avatarSize}px; border-radius: ${borderRadius}; border: 0; outline: none; -ms-interpolation-mode: bicubic;" />
+          ` : ''}
           ${hasLogo ? `
-          <div style="height: 10px; line-height: 10px; font-size: 10px;">&nbsp;</div>
-          <img src="${data.images.logoUrl}" alt="${data.company.companyName}" width="${data.images.logoWidth || 110}" border="0" style="display: block; width: ${data.images.logoWidth || 110}px; max-width: ${data.images.logoWidth || 110}px; height: auto; border: 0; outline: none; -ms-interpolation-mode: bicubic;" />
+          <div style="height: ${hasAvatar ? '10px' : '0px'}; line-height: ${hasAvatar ? '10px' : '0px'}; font-size: 1px;">&nbsp;</div>
+          <img src="${data.images.logoUrl}" alt="${data.company.companyName}" width="${logoWidth}" border="0" style="display: block; width: ${logoWidth}px; max-width: ${logoWidth}px; height: auto; border: 0; outline: none; -ms-interpolation-mode: bicubic;" />
           ` : ''}
         </td>
         <td width="2" style="width: 2px; min-width: 2px; background-color: ${primary}; font-size: 1px; line-height: 1px; padding: 0;">&nbsp;</td>
@@ -367,18 +370,20 @@ function generateModernSplitTemplate(data: SignatureData): string {
   const iconSet = getIconSet(data.style.iconStyle, primary);
   const borderRadius = getBorderRadius(data.images.avatarShape);
   const avatarSize = data.images.avatarSize || 90;
+  const logoWidth = data.images.logoWidth || 140;
+  const leftBrandColWidth = Math.max(data.images.avatarUrl ? avatarSize : 0, data.images.logoUrl ? logoWidth : 0);
 
   return `
     <table cellpadding="0" cellspacing="0" border="0" style="background: none; border-collapse: collapse; margin: 0; padding: 0; font-family: ${font};">
       <tr>
         <!-- Left Brand Column -->
-        <td valign="top" align="center" style="vertical-align: top; padding: 0 18px 0 0; text-align: center;">
+        <td valign="top" align="center" width="${leftBrandColWidth}" style="vertical-align: top; padding: 0 18px 0 0; text-align: center; width: ${leftBrandColWidth}px; max-width: ${leftBrandColWidth}px;">
           ${data.images.avatarUrl ? `
           <img src="${data.images.avatarUrl}" alt="${data.personal.fullName}" width="${avatarSize}" height="${avatarSize}" border="0" style="display: block; width: ${avatarSize}px; max-width: ${avatarSize}px; height: ${avatarSize}px; border-radius: ${borderRadius}; border: 2px solid ${secondary}; outline: none; -ms-interpolation-mode: bicubic;" />
           ` : ''}
           ${data.images.logoUrl ? `
           <div style="height: 10px; line-height: 10px; font-size: 10px;">&nbsp;</div>
-          <img src="${data.images.logoUrl}" alt="${data.company.companyName}" width="${data.images.logoWidth || 95}" border="0" style="display: block; width: ${data.images.logoWidth || 95}px; height: auto; border: 0; outline: none; margin: 0 auto; -ms-interpolation-mode: bicubic;" />
+          <img src="${data.images.logoUrl}" alt="${data.company.companyName}" width="${logoWidth}" border="0" style="display: block; width: ${logoWidth}px; max-width: ${logoWidth}px; height: auto; border: 0; outline: none; margin: 0 auto; -ms-interpolation-mode: bicubic;" />
           ` : ''}
           <div style="margin-top: 8px;">
             ${renderSocials(data, iconSet)}

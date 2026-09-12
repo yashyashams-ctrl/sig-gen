@@ -4,9 +4,7 @@ import { DEFAULT_SIGNATURE_DATA } from './data/defaults';
 import { generateSignatureHtml } from './utils/signatureGenerator';
 import { Header } from './components/Header';
 import { TemplateSelector } from './components/TemplateSelector';
-import { PersonalForm } from './components/Editor/PersonalForm';
-import { CompanyForm } from './components/Editor/CompanyForm';
-import { ContactForm } from './components/Editor/ContactForm';
+import { DetailsFormGroup } from './components/Editor/DetailsFormGroup';
 import { ImagesForm } from './components/Editor/ImagesForm';
 import { SocialForm } from './components/Editor/SocialForm';
 import { CtaDisclaimerForm } from './components/Editor/CtaDisclaimerForm';
@@ -139,7 +137,7 @@ export const App: React.FC = () => {
           showCta: false,
           buttonText: 'Schedule a Call',
           buttonUrl: '',
-          bgColor: '#0f4c81',
+          bgColor: '#0061A4',
           textColor: '#ffffff',
         },
         disclaimer: {
@@ -149,10 +147,10 @@ export const App: React.FC = () => {
         },
         style: {
           templateId: 'corporate',
-          primaryColor: '#0f4c81',
-          secondaryColor: '#2563eb',
-          textColor: '#1e293b',
-          mutedColor: '#64748b',
+          primaryColor: '#0061A4',
+          secondaryColor: '#535F70',
+          textColor: '#191C1E',
+          mutedColor: '#73777F',
           fontFamily: 'Arial, Helvetica, sans-serif',
           fontSizeScale: 'normal',
           iconStyle: 'colored',
@@ -167,6 +165,12 @@ export const App: React.FC = () => {
 
   return (
     <div className="sig-app-layout">
+      {/* Material You Atmospheric Background Blur Shapes */}
+      <div className="bg-blur-container" aria-hidden="true">
+        <div className="bg-blur-shape-1" />
+        <div className="bg-blur-shape-2" />
+        <div className="bg-blur-shape-3" />
+      </div>
       {/* Sleek App Header */}
       <Header
         onReset={handleReset}
@@ -237,11 +241,12 @@ export const App: React.FC = () => {
             {/* Active Tab Panels */}
             <div className="tab-body-area">
               {activeTab === 'details' && (
-                <div className="stack-v-gap">
-                  <PersonalForm data={data.personal} onChange={updatePersonal} />
-                  <CompanyForm data={data.company} onChange={updateCompany} />
-                  <ContactForm data={data.contact} onChange={updateContact} />
-                </div>
+                <DetailsFormGroup
+                  data={data}
+                  updatePersonal={updatePersonal}
+                  updateCompany={updateCompany}
+                  updateContact={updateContact}
+                />
               )}
 
               {activeTab === 'images' && (

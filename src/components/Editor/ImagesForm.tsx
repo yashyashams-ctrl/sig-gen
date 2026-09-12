@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import type { SignatureData, AvatarShape } from '../../types/signature';
-import { PRESET_AVATARS, PRESET_LOGOS, PRESET_BANNERS } from '../../data/defaults';
+import { PRESET_AVATARS, PRESET_LOGOS } from '../../data/defaults';
 import { ImageIcon, Upload, Trash2 } from 'lucide-react';
 
 interface Props {
@@ -11,8 +11,7 @@ interface Props {
 export const ImagesForm: React.FC<Props> = ({ data, onChange }) => {
   const avatarInputRef = useRef<HTMLInputElement>(null);
   const logoInputRef = useRef<HTMLInputElement>(null);
-  const bannerInputRef = useRef<HTMLInputElement>(null);
-  const [activeTab, setActiveTab] = useState<'avatar' | 'logo' | 'banner'>('avatar');
+  const [activeTab, setActiveTab] = useState<'avatar' | 'logo'>('avatar');
   const [isProcessing, setIsProcessing] = useState(false);
 
   // Crops image into a genuine round PNG with transparent background
@@ -50,7 +49,7 @@ export const ImagesForm: React.FC<Props> = ({ data, onChange }) => {
 
   const handleFileUpload = (
     e: React.ChangeEvent<HTMLInputElement>,
-    field: 'avatarUrl' | 'logoUrl' | 'bannerUrl',
+    field: 'avatarUrl' | 'logoUrl',
     autoCircle = false
   ) => {
     const file = e.target.files?.[0];
@@ -104,20 +103,21 @@ export const ImagesForm: React.FC<Props> = ({ data, onChange }) => {
         >
           Company Logo
         </button>
-        <button
-          type="button"
-          className={`subtab-pill ${activeTab === 'banner' ? 'is-active' : ''}`}
-          onClick={() => setActiveTab('banner')}
-        >
-          Promo Banner
-        </button>
       </div>
 
       {/* AVATAR PANEL */}
       {activeTab === 'avatar' && (
         <div className="media-panel-body">
           <div className="media-preview-row">
-            <div className={`media-thumb-box shape-${data.avatarShape}`}>
+            <div
+              className={`media-thumb-box shape-${data.avatarShape}`}
+              style={{
+                width: `${data.avatarSize}px`,
+                height: `${data.avatarSize}px`,
+                flexShrink: 0,
+                transition: 'all 200ms ease',
+              }}
+            >
               {data.avatarUrl ? (
                 <img
                   src={data.avatarUrl}
@@ -236,12 +236,23 @@ export const ImagesForm: React.FC<Props> = ({ data, onChange }) => {
       {activeTab === 'logo' && (
         <div className="media-panel-body">
           <div className="media-preview-row">
-            <div className="media-thumb-box logo-frame">
+            <div
+              className="media-thumb-box logo-frame"
+              style={{
+                width: `${data.logoWidth}px`,
+                maxWidth: '100%',
+                height: 'auto',
+                minHeight: '48px',
+                flexShrink: 0,
+                padding: '6px 10px',
+                transition: 'all 200ms ease',
+              }}
+            >
               {data.logoUrl ? (
                 <img
                   src={data.logoUrl}
                   alt="Company Logo"
-                  style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+                  style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
                 />
               ) : (
                 <span className="empty-text">No logo</span>
@@ -313,110 +324,6 @@ export const ImagesForm: React.FC<Props> = ({ data, onChange }) => {
                 type="button"
                 className="preset-tag"
                 onClick={() => onChange('logoUrl', p.url)}
-              >
-                {p.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* BANNER PANEL */}
-      {activeTab === 'banner' && (
-        <div className="media-panel-body">
-          <div className="media-preview-row">
-            <div className="media-thumb-box banner-frame">
-              {data.bannerUrl ? (
-                <img
-                  src={data.bannerUrl}
-                  alt="Banner"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px' }}
-                />
-              ) : (
-                <span className="empty-text">No banner</span>
-              )}
-            </div>
-
-            <div className="media-inputs-col">
-              <input
-                type="text"
-                className="text-input"
-                value={data.bannerUrl}
-                onChange={(e) => onChange('bannerUrl', e.target.value)}
-                placeholder="Banner graphic URL (https://...)"
-              />
-
-              <div className="media-actions-row">
-                <input
-                  type="file"
-                  ref={bannerInputRef}
-                  accept="image/*"
-                  style={{ display: 'none' }}
-                  onChange={(e) => handleFileUpload(e, 'bannerUrl')}
-                />
-                <button
-                  type="button"
-                  className="secondary-btn-sm"
-                  onClick={() => bannerInputRef.current?.click()}
-                >
-                  <Upload size={12} />
-                  <span>Upload File</span>
-                </button>
-
-                {data.bannerUrl && (
-                  <button
-                    type="button"
-                    className="danger-btn-sm"
-                    onClick={() => onChange('bannerUrl', '')}
-                  >
-                    <Trash2 size={12} />
-                    <span>Remove</span>
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <div className="form-group" style={{ marginTop: '16px' }}>
-            <label htmlFor="bannerLinkInput">Target URL</label>
-            <input
-              id="bannerLinkInput"
-              type="text"
-              className="text-input"
-              value={data.bannerLink}
-              onChange={(e) => onChange('bannerLink', e.target.value)}
-              placeholder="https://yourcompany.com/conference"
-            />
-          </div>
-
-          <div className="form-group" style={{ marginTop: '12px' }}>
-            <div className="label-with-value">
-              <label htmlFor="bannerWidthSlider">Banner Width</label>
-              <span className="val-text">{data.bannerWidth}px</span>
-            </div>
-            <input
-              id="bannerWidthSlider"
-              type="range"
-              min="280"
-              max="480"
-              step="10"
-              value={data.bannerWidth}
-              onChange={(e) => onChange('bannerWidth', Number(e.target.value))}
-              className="clean-range-slider"
-            />
-          </div>
-
-          <div className="quick-presets-strip">
-            <span className="presets-caption">Presets:</span>
-            {PRESET_BANNERS.map((p) => (
-              <button
-                key={p.label}
-                type="button"
-                className="preset-tag"
-                onClick={() => {
-                  onChange('bannerUrl', p.url);
-                  onChange('bannerLink', p.link);
-                }}
               >
                 {p.label}
               </button>

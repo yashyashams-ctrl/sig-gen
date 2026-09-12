@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <style>
+    .f-script { font-family: 'Georgia', 'Times New Roman', serif; font-style: italic; font-weight: bold; font-size: 78px; fill: #001A72; }
+    .text-serif { font-family: 'Georgia', 'Times New Roman', serif; font-style: italic; font-weight: bold; font-size: 36px; fill: #001A72; letter-spacing: 0.5px; }
+  </style>
+  <text x="5" y="68" class="f-script">f</text>
+  <text x="36" y="56" class="text-serif">AXOLIF Industries</text>
+</svg>

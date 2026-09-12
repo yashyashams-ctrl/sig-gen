@@ -36,13 +36,6 @@ export const TEMPLATES: TemplateDefinition[] = [
     badge: 'Mobile Optimized',
     bestFor: 'High-volume senders & Tech Support',
   },
-  {
-    id: 'banner-showcase',
-    name: 'Promotional Banner',
-    description: 'Includes a prominent clickable graphic banner underneath for webinars, product announcements, or awards.',
-    badge: 'Marketing Boost',
-    bestFor: 'Product launches, Events & Promos',
-  },
 ];
 
 export const FONT_OPTIONS = [
@@ -57,17 +50,21 @@ export const FONT_OPTIONS = [
 ];
 
 export const COLOR_PRESETS = [
+  { name: 'Sky Blue (Default)', primary: '#0061A4', secondary: '#535F70' },
   { name: 'Executive Blue', primary: '#0f4c81', secondary: '#2563eb' },
   { name: 'Modern Indigo', primary: '#4f46e5', secondary: '#818cf8' },
   { name: 'Emerald Forest', primary: '#059669', secondary: '#10b981' },
   { name: 'Crimson Ruby', primary: '#be123c', secondary: '#e11d48' },
   { name: 'Sleek Slate', primary: '#334155', secondary: '#64748b' },
   { name: 'Violet Royale', primary: '#7c3aed', secondary: '#a855f7' },
-  { name: 'Warm Amber', primary: '#d97706', secondary: '#f59e0b' },
   { name: 'Pure Onyx', primary: '#18181b', secondary: '#3f3f46' },
 ];
 
 export const PRESET_AVATARS = [
+  {
+    label: 'Default Profile Avatar',
+    url: '/avatar.svg',
+  },
   {
     label: 'Professional Female',
     url: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80',
@@ -76,97 +73,74 @@ export const PRESET_AVATARS = [
     label: 'Executive Male',
     url: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&auto=format&fit=crop&q=80',
   },
-  {
-    label: 'Creative Designer',
-    url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80',
-  },
-  {
-    label: 'Tech Specialist',
-    url: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&auto=format&fit=crop&q=80',
-  },
 ];
 
 export const PRESET_LOGOS = [
   {
-    label: 'Acme Global Logo',
-    url: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&auto=format&fit=crop&q=80',
-  },
-  {
-    label: 'Tech Innovators Badge',
-    url: 'https://images.unsplash.com/photo-1614680376593-902f749f7ffc?w=300&auto=format&fit=crop&q=80',
+    label: 'FAXOLIF Industries',
+    url: '/logo.svg',
   },
 ];
 
-export const PRESET_BANNERS = [
-  {
-    label: 'Book a Strategy Call',
-    url: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop&q=80',
-    link: 'https://calendly.com',
-  },
-  {
-    label: 'New Product Launch',
-    url: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=80',
-    link: 'https://example.com/new-product',
-  },
-];
+export const PRESET_BANNERS: { label: string; url: string; link: string }[] = [];
 
 export const DEFAULT_SIGNATURE_DATA: SignatureData = {
   personal: {
     fullName: 'Alexandra Morgan',
-    jobTitle: 'VP of Product Strategy',
-    department: 'Enterprise Solutions',
+    jobTitle: 'VP of Operations',
+    department: 'Corporate Division',
     pronouns: 'she/her',
   },
   company: {
-    companyName: 'AcroPulse Technologies',
-    tagline: 'Empowering Enterprise Intelligence',
-    website: 'https://acropulse.io',
-    address: '450 Lexington Ave, Suite 2200, New York, NY 10017',
-    office: 'Building B, Floor 4',
+    companyName: 'FAXOLIF Industries',
+    tagline: 'Leading Industrial Solutions',
+    website: 'https://faxolif.com',
+    address: '100 Industrial Parkway, Suite 400',
+    office: 'Building A',
   },
   contact: {
-    email: 'alexandra.m@acropulse.io',
+    email: 'alexandra.m@faxolif.com',
     phoneWork: '+1 (212) 555-0198',
     phoneMobile: '+1 (917) 555-8423',
   },
   images: {
-    avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80',
+    avatarUrl: '/avatar.svg',
     avatarShape: 'circle',
     avatarSize: 85,
-    logoUrl: '',
-    logoWidth: 120,
+    logoUrl: '/logo.svg',
+    logoWidth: 140,
     bannerUrl: '',
-    bannerLink: 'https://acropulse.io/demo',
+    bannerLink: '',
     bannerWidth: 380,
   },
   socials: {
-    linkedin: 'https://linkedin.com/in/alexandramorgan',
-    twitter: 'https://x.com/alexandra_m',
-    github: 'https://github.com',
+    linkedin: 'https://linkedin.com/company/faxolif',
+    twitter: 'https://x.com/faxolif',
+    github: 'https://github.com/faxolif',
     instagram: '',
     facebook: '',
     youtube: '',
     whatsapp: '+19175558423',
-    calendly: 'https://calendly.com/alexandra-acropulse',
+    calendly: 'https://calendly.com/faxolif',
   },
   cta: {
     showCta: true,
-    buttonText: '📅 Schedule a 15-Min Meeting',
-    buttonUrl: 'https://calendly.com/alexandra-acropulse',
-    bgColor: '#0f4c81',
+    buttonText: '📅 Schedule a Meeting',
+    buttonUrl: 'https://calendly.com/faxolif',
+    bgColor: '#0061A4',
     textColor: '#ffffff',
   },
   disclaimer: {
     showDisclaimer: false,
-    text: 'CONFIDENTIALITY NOTICE: This e-mail transmission and any documents, files, or previous e-mail messages attached to it may contain confidential information that is legally privileged.',
-    showGreenEco: true,
+    text: 'CONFIDENTIALITY NOTICE: This e-mail transmission and any documents attached to it may contain confidential information that is legally privileged.',
+    showGreenEco: false, // Default green eco message disabled per user request
   },
   style: {
     templateId: 'corporate',
-    primaryColor: '#0f4c81',
-    secondaryColor: '#2563eb',
-    textColor: '#1e293b',
-    mutedColor: '#64748b',
+    primaryColor: '#0061A4',
+    secondaryColor: '#535F70',
+    textColor: '#191C1E',
+    mutedColor: '#73777F',
     fontFamily: 'Arial, Helvetica, sans-serif',
     fontSizeScale: 'normal',
     iconStyle: 'colored',
