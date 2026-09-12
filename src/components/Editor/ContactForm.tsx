@@ -24,7 +24,7 @@ export const ContactForm: React.FC<Props> = ({ data, onChange }) => {
             className="text-input"
             value={data.email}
             onChange={(e) => onChange('email', e.target.value)}
-            placeholder="alexandra.m@acropulse.io"
+            placeholder="e.g. john.doe@example.com"
           />
         </div>
 
@@ -36,7 +36,7 @@ export const ContactForm: React.FC<Props> = ({ data, onChange }) => {
             className="text-input"
             value={data.phoneWork}
             onChange={(e) => onChange('phoneWork', e.target.value)}
-            placeholder="+1 (212) 555-0198"
+            placeholder="e.g. +1 (555) 123-4567"
           />
         </div>
 
@@ -48,7 +48,7 @@ export const ContactForm: React.FC<Props> = ({ data, onChange }) => {
             className="text-input"
             value={data.phoneMobile}
             onChange={(e) => onChange('phoneMobile', e.target.value)}
-            placeholder="+1 (917) 555-8423"
+            placeholder="e.g. +1 (555) 987-6543"
           />
         </div>
       </div>

@@ -24,7 +24,7 @@ export const PersonalForm: React.FC<Props> = ({ data, onChange }) => {
             className="text-input"
             value={data.fullName}
             onChange={(e) => onChange('fullName', e.target.value)}
-            placeholder="Alexandra Morgan"
+            placeholder="e.g. John Doe"
           />
         </div>
 
@@ -36,7 +36,7 @@ export const PersonalForm: React.FC<Props> = ({ data, onChange }) => {
             className="text-input"
             value={data.jobTitle}
             onChange={(e) => onChange('jobTitle', e.target.value)}
-            placeholder="VP of Product Strategy"
+            placeholder="e.g. Product Manager"
           />
         </div>
 
@@ -48,7 +48,7 @@ export const PersonalForm: React.FC<Props> = ({ data, onChange }) => {
             className="text-input"
             value={data.department}
             onChange={(e) => onChange('department', e.target.value)}
-            placeholder="Enterprise Solutions"
+            placeholder="e.g. Operations"
           />
         </div>
 
@@ -60,7 +60,7 @@ export const PersonalForm: React.FC<Props> = ({ data, onChange }) => {
             className="text-input"
             value={data.pronouns}
             onChange={(e) => onChange('pronouns', e.target.value)}
-            placeholder="she/her"
+            placeholder="e.g. he/him"
           />
         </div>
       </div>
