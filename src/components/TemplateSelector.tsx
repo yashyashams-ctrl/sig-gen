@@ -16,7 +16,7 @@ export const TemplateSelector: React.FC<Props> = ({ selectedId, onSelect }) => {
           <LayoutGrid size={15} className="title-icon" />
           <span className="section-heading">Signature Layout</span>
         </div>
-        <span className="count-label">6 templates</span>
+        <span className="count-label">{TEMPLATES.length} templates</span>
       </div>
 
       <div className="template-cards-grid">

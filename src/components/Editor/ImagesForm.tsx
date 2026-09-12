@@ -108,227 +108,277 @@ export const ImagesForm: React.FC<Props> = ({ data, onChange }) => {
       {/* AVATAR PANEL */}
       {activeTab === 'avatar' && (
         <div className="media-panel-body">
-          <div className="media-preview-row">
-            <div
-              className={`media-thumb-box shape-${data.avatarShape}`}
-              style={{
-                width: `${data.avatarSize}px`,
-                height: `${data.avatarSize}px`,
-                flexShrink: 0,
-                transition: 'all 200ms ease',
-              }}
-            >
-              {data.avatarUrl ? (
-                <img
-                  src={data.avatarUrl}
-                  alt="Avatar"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              ) : (
-                <span className="empty-text">No photo</span>
-              )}
-            </div>
-
-            <div className="media-inputs-col">
-              <input
-                type="text"
-                className="text-input"
-                value={data.avatarUrl}
-                onChange={(e) => onChange('avatarUrl', e.target.value)}
-                placeholder="Paste image URL (https://...)"
-              />
-
-              <div className="media-actions-row">
+          <div className="nested-option-block" style={{ marginBottom: '14px' }}>
+            <div className="option-row">
+              <div className="option-meta">
+                <span className="option-title">Include Profile Photo</span>
+                <span className="option-desc">Show headshot or profile avatar in your signature layout.</span>
+              </div>
+              <label className="toggle-switch">
                 <input
-                  type="file"
-                  ref={avatarInputRef}
-                  accept="image/*"
-                  style={{ display: 'none' }}
-                  onChange={(e) => handleFileUpload(e, 'avatarUrl', true)}
+                  type="checkbox"
+                  checked={!!data.avatarUrl}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      onChange('avatarUrl', '/avatar.svg');
+                    } else {
+                      onChange('avatarUrl', '');
+                    }
+                  }}
                 />
-                <button
-                  type="button"
-                  className="secondary-btn-sm"
-                  onClick={() => avatarInputRef.current?.click()}
-                  disabled={isProcessing}
-                >
-                  <Upload size={12} />
-                  <span>{isProcessing ? 'Processing...' : 'Upload File'}</span>
-                </button>
+                <span className="toggle-slider" />
+              </label>
+            </div>
+          </div>
 
-                {data.avatarUrl && (
+          {data.avatarUrl ? (
+            <>
+              <div className="media-preview-row">
+                <div
+                  className={`media-thumb-box shape-${data.avatarShape}`}
+                  style={{
+                    width: `${data.avatarSize}px`,
+                    height: `${data.avatarSize}px`,
+                    flexShrink: 0,
+                    transition: 'all 200ms ease',
+                  }}
+                >
+                  <img
+                    src={data.avatarUrl}
+                    alt="Avatar"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </div>
+
+                <div className="media-inputs-col">
+                  <input
+                    type="text"
+                    className="text-input"
+                    value={data.avatarUrl}
+                    onChange={(e) => onChange('avatarUrl', e.target.value)}
+                    placeholder="Paste image URL (https://...)"
+                  />
+
+                  <div className="media-actions-row">
+                    <input
+                      type="file"
+                      ref={avatarInputRef}
+                      accept="image/*"
+                      style={{ display: 'none' }}
+                      onChange={(e) => handleFileUpload(e, 'avatarUrl', true)}
+                    />
+                    <button
+                      type="button"
+                      className="secondary-btn-sm"
+                      onClick={() => avatarInputRef.current?.click()}
+                      disabled={isProcessing}
+                    >
+                      <Upload size={12} />
+                      <span>{isProcessing ? 'Processing...' : 'Upload File'}</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className="danger-btn-sm"
+                      onClick={() => onChange('avatarUrl', '')}
+                    >
+                      <Trash2 size={12} />
+                      <span>Remove</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="form-grid-2col" style={{ marginTop: '16px' }}>
+                <div className="form-group">
+                  <label>Crop Shape</label>
+                  <div className="segmented-toggle">
+                    <button
+                      type="button"
+                      className={`toggle-option ${data.avatarShape === 'circle' ? 'is-selected' : ''}`}
+                      onClick={() => handleShapeChange('circle')}
+                    >
+                      Circle
+                    </button>
+                    <button
+                      type="button"
+                      className={`toggle-option ${data.avatarShape === 'rounded' ? 'is-selected' : ''}`}
+                      onClick={() => handleShapeChange('rounded')}
+                    >
+                      Rounded
+                    </button>
+                    <button
+                      type="button"
+                      className={`toggle-option ${data.avatarShape === 'square' ? 'is-selected' : ''}`}
+                      onClick={() => handleShapeChange('square')}
+                    >
+                      Square
+                    </button>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <div className="label-with-value">
+                    <label htmlFor="avatarSizeSlider">Render Size</label>
+                    <span className="val-text">{data.avatarSize}px</span>
+                  </div>
+                  <input
+                    id="avatarSizeSlider"
+                    type="range"
+                    min="55"
+                    max="115"
+                    step="5"
+                    value={data.avatarSize}
+                    onChange={(e) => onChange('avatarSize', Number(e.target.value))}
+                    className="clean-range-slider"
+                  />
+                </div>
+              </div>
+
+              <div className="quick-presets-strip">
+                <span className="presets-caption">Presets:</span>
+                {PRESET_AVATARS.map((p) => (
                   <button
+                    key={p.label}
                     type="button"
-                    className="danger-btn-sm"
-                    onClick={() => onChange('avatarUrl', '')}
+                    className="preset-tag"
+                    onClick={() => onChange('avatarUrl', p.url)}
                   >
-                    <Trash2 size={12} />
-                    <span>Remove</span>
+                    {p.label}
                   </button>
-                )}
+                ))}
               </div>
+            </>
+          ) : (
+            <div className="disabled-notice-box" style={{ padding: '16px', background: 'var(--md-sys-color-surface-container)', borderRadius: '8px', textAlign: 'center', color: 'var(--md-sys-color-outline)' }}>
+              <span>Profile photo is currently disabled. Signature will render without a user image.</span>
             </div>
-          </div>
-
-          <div className="form-grid-2col" style={{ marginTop: '16px' }}>
-            <div className="form-group">
-              <label>Crop Shape</label>
-              <div className="segmented-toggle">
-                <button
-                  type="button"
-                  className={`toggle-option ${data.avatarShape === 'circle' ? 'is-selected' : ''}`}
-                  onClick={() => handleShapeChange('circle')}
-                >
-                  Circle
-                </button>
-                <button
-                  type="button"
-                  className={`toggle-option ${data.avatarShape === 'rounded' ? 'is-selected' : ''}`}
-                  onClick={() => handleShapeChange('rounded')}
-                >
-                  Rounded
-                </button>
-                <button
-                  type="button"
-                  className={`toggle-option ${data.avatarShape === 'square' ? 'is-selected' : ''}`}
-                  onClick={() => handleShapeChange('square')}
-                >
-                  Square
-                </button>
-              </div>
-            </div>
-
-            <div className="form-group">
-              <div className="label-with-value">
-                <label htmlFor="avatarSizeSlider">Render Size</label>
-                <span className="val-text">{data.avatarSize}px</span>
-              </div>
-              <input
-                id="avatarSizeSlider"
-                type="range"
-                min="55"
-                max="115"
-                step="5"
-                value={data.avatarSize}
-                onChange={(e) => onChange('avatarSize', Number(e.target.value))}
-                className="clean-range-slider"
-              />
-            </div>
-          </div>
-
-          <div className="quick-presets-strip">
-            <span className="presets-caption">Presets:</span>
-            {PRESET_AVATARS.map((p) => (
-              <button
-                key={p.label}
-                type="button"
-                className="preset-tag"
-                onClick={() => onChange('avatarUrl', p.url)}
-              >
-                {p.label}
-              </button>
-            ))}
-          </div>
+          )}
         </div>
       )}
 
       {/* LOGO PANEL */}
       {activeTab === 'logo' && (
         <div className="media-panel-body">
-          <div className="media-preview-row">
-            <div
-              className="media-thumb-box logo-frame"
-              style={{
-                width: `${data.logoWidth}px`,
-                maxWidth: '100%',
-                height: 'auto',
-                minHeight: '48px',
-                flexShrink: 0,
-                padding: '6px 10px',
-                transition: 'all 200ms ease',
-              }}
-            >
-              {data.logoUrl ? (
-                <img
-                  src={data.logoUrl}
-                  alt="Company Logo"
-                  style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
-                />
-              ) : (
-                <span className="empty-text">No logo</span>
-              )}
-            </div>
-
-            <div className="media-inputs-col">
-              <input
-                type="text"
-                className="text-input"
-                value={data.logoUrl}
-                onChange={(e) => onChange('logoUrl', e.target.value)}
-                placeholder="Paste logo URL (https://...)"
-              />
-
-              <div className="media-actions-row">
-                <input
-                  type="file"
-                  ref={logoInputRef}
-                  accept="image/*"
-                  style={{ display: 'none' }}
-                  onChange={(e) => handleFileUpload(e, 'logoUrl')}
-                />
-                <button
-                  type="button"
-                  className="secondary-btn-sm"
-                  onClick={() => logoInputRef.current?.click()}
-                >
-                  <Upload size={12} />
-                  <span>Upload File</span>
-                </button>
-
-                {data.logoUrl && (
-                  <button
-                    type="button"
-                    className="danger-btn-sm"
-                    onClick={() => onChange('logoUrl', '')}
-                  >
-                    <Trash2 size={12} />
-                    <span>Remove</span>
-                  </button>
-                )}
+          <div className="nested-option-block" style={{ marginBottom: '14px' }}>
+            <div className="option-row">
+              <div className="option-meta">
+                <span className="option-title">Include Company Logo</span>
+                <span className="option-desc">Show company or brand logo in your signature layout.</span>
               </div>
+              <label className="toggle-switch">
+                <input
+                  type="checkbox"
+                  checked={!!data.logoUrl}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      onChange('logoUrl', '/logo.svg');
+                    } else {
+                      onChange('logoUrl', '');
+                    }
+                  }}
+                />
+                <span className="toggle-slider" />
+              </label>
             </div>
           </div>
 
-          <div className="form-group" style={{ marginTop: '16px' }}>
-            <div className="label-with-value">
-              <label htmlFor="logoWidthSlider">Max Logo Width</label>
-              <span className="val-text">{data.logoWidth}px</span>
-            </div>
-            <input
-              id="logoWidthSlider"
-              type="range"
-              min="70"
-              max="180"
-              step="5"
-              value={data.logoWidth}
-              onChange={(e) => onChange('logoWidth', Number(e.target.value))}
-              className="clean-range-slider"
-            />
-          </div>
+          {data.logoUrl ? (
+            <>
+              <div className="media-preview-row">
+                <div
+                  className="media-thumb-box logo-frame"
+                  style={{
+                    width: `${data.logoWidth}px`,
+                    maxWidth: '100%',
+                    height: 'auto',
+                    minHeight: '48px',
+                    flexShrink: 0,
+                    padding: '6px 10px',
+                    transition: 'all 200ms ease',
+                  }}
+                >
+                  <img
+                    src={data.logoUrl}
+                    alt="Company Logo"
+                    style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
+                  />
+                </div>
 
-          <div className="quick-presets-strip">
-            <span className="presets-caption">Presets:</span>
-            {PRESET_LOGOS.map((p) => (
-              <button
-                key={p.label}
-                type="button"
-                className="preset-tag"
-                onClick={() => onChange('logoUrl', p.url)}
-              >
-                {p.label}
-              </button>
-            ))}
-          </div>
+                <div className="media-inputs-col">
+                  <input
+                    type="text"
+                    className="text-input"
+                    value={data.logoUrl}
+                    onChange={(e) => onChange('logoUrl', e.target.value)}
+                    placeholder="Paste logo URL (https://...)"
+                  />
+
+                  <div className="media-actions-row">
+                    <input
+                      type="file"
+                      ref={logoInputRef}
+                      accept="image/*"
+                      style={{ display: 'none' }}
+                      onChange={(e) => handleFileUpload(e, 'logoUrl')}
+                    />
+                    <button
+                      type="button"
+                      className="secondary-btn-sm"
+                      onClick={() => logoInputRef.current?.click()}
+                    >
+                      <Upload size={12} />
+                      <span>Upload File</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className="danger-btn-sm"
+                      onClick={() => onChange('logoUrl', '')}
+                    >
+                      <Trash2 size={12} />
+                      <span>Remove</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="form-group" style={{ marginTop: '16px' }}>
+                <div className="label-with-value">
+                  <label htmlFor="logoWidthSlider">Max Logo Width</label>
+                  <span className="val-text">{data.logoWidth}px</span>
+                </div>
+                <input
+                  id="logoWidthSlider"
+                  type="range"
+                  min="70"
+                  max="180"
+                  step="5"
+                  value={data.logoWidth}
+                  onChange={(e) => onChange('logoWidth', Number(e.target.value))}
+                  className="clean-range-slider"
+                />
+              </div>
+
+              <div className="quick-presets-strip">
+                <span className="presets-caption">Presets:</span>
+                {PRESET_LOGOS.map((p) => (
+                  <button
+                    key={p.label}
+                    type="button"
+                    className="preset-tag"
+                    onClick={() => onChange('logoUrl', p.url)}
+                  >
+                    {p.label}
+                  </button>
+                ))}
+              </div>
+            </>
+          ) : (
+            <div className="disabled-notice-box" style={{ padding: '16px', background: 'var(--md-sys-color-surface-container)', borderRadius: '8px', textAlign: 'center', color: 'var(--md-sys-color-outline)' }}>
+              <span>Company logo is currently disabled. Signature will render without a logo image.</span>
+            </div>
+          )}
         </div>
       )}
     </div>

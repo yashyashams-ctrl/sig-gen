@@ -1,4 +1,5 @@
 import type { SignatureData, FontSizeScale, IconStyle } from '../types/signature';
+import { formatSocialUrl } from './validation';
 
 // High-DPI Crystal Clear Icons from Reliable CDN
 const ICONS = {
@@ -93,18 +94,23 @@ function renderCtaButton(data: SignatureData, font: string): string {
 function renderSocials(data: SignatureData, iconSet: typeof ICONS.colored): string {
   const links: { name: string; url: string; icon: string }[] = [];
 
-  if (data.socials.linkedin) links.push({ name: 'LinkedIn', url: data.socials.linkedin, icon: iconSet.linkedin });
-  if (data.socials.twitter) links.push({ name: 'X', url: data.socials.twitter, icon: iconSet.twitter });
-  if (data.socials.github) links.push({ name: 'GitHub', url: data.socials.github, icon: iconSet.github });
-  if (data.socials.instagram) links.push({ name: 'Instagram', url: data.socials.instagram, icon: iconSet.instagram });
-  if (data.socials.facebook) links.push({ name: 'Facebook', url: data.socials.facebook, icon: iconSet.facebook });
-  if (data.socials.youtube) links.push({ name: 'YouTube', url: data.socials.youtube, icon: iconSet.youtube });
-  if (data.socials.whatsapp) {
-    const cleanNum = data.socials.whatsapp.replace(/[^0-9]/g, '');
-    const waUrl = data.socials.whatsapp.startsWith('http') ? data.socials.whatsapp : `https://wa.me/${cleanNum}`;
-    links.push({ name: 'WhatsApp', url: waUrl, icon: iconSet.whatsapp });
-  }
-  if (data.socials.calendly) links.push({ name: 'Calendar', url: data.socials.calendly, icon: iconSet.calendly });
+  const addIfValid = (key: keyof SignatureData['socials'], name: string, icon: string) => {
+    const raw = data.socials[key];
+    if (!raw) return;
+    const formatted = formatSocialUrl(key, raw);
+    if (formatted) {
+      links.push({ name, url: formatted, icon });
+    }
+  };
+
+  addIfValid('linkedin', 'LinkedIn', iconSet.linkedin);
+  addIfValid('twitter', 'X', iconSet.twitter);
+  addIfValid('github', 'GitHub', iconSet.github);
+  addIfValid('instagram', 'Instagram', iconSet.instagram);
+  addIfValid('facebook', 'Facebook', iconSet.facebook);
+  addIfValid('youtube', 'YouTube', iconSet.youtube);
+  addIfValid('whatsapp', 'WhatsApp', iconSet.whatsapp);
+  addIfValid('calendly', 'Calendar', iconSet.calendly);
 
   if (links.length === 0) return '';
 
@@ -376,10 +382,9 @@ function generateModernSplitTemplate(data: SignatureData): string {
   return `
     <table cellpadding="0" cellspacing="0" border="0" style="background: none; border-collapse: collapse; margin: 0; padding: 0; font-family: ${font};">
       <tr>
-        <!-- Left Brand Column -->
         <td valign="top" align="center" width="${leftBrandColWidth}" style="vertical-align: top; padding: 0 18px 0 0; text-align: center; width: ${leftBrandColWidth}px; max-width: ${leftBrandColWidth}px;">
           ${data.images.avatarUrl ? `
-          <img src="${data.images.avatarUrl}" alt="${data.personal.fullName}" width="${avatarSize}" height="${avatarSize}" border="0" style="display: block; width: ${avatarSize}px; max-width: ${avatarSize}px; height: ${avatarSize}px; border-radius: ${borderRadius}; border: 2px solid ${secondary}; outline: none; -ms-interpolation-mode: bicubic;" />
+          <img src="${data.images.avatarUrl}" alt="${data.personal.fullName}" width="${avatarSize}" height="${avatarSize}" border="0" style="display: block; width: ${avatarSize}px; max-width: ${avatarSize}px; height: ${avatarSize}px; border-radius: ${borderRadius}; border: 2px solid ${secondary}; outline: none; margin: 0 auto; -ms-interpolation-mode: bicubic;" />
           ` : ''}
           ${data.images.logoUrl ? `
           <div style="height: 10px; line-height: 10px; font-size: 10px;">&nbsp;</div>

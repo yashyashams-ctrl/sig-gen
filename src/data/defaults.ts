@@ -36,6 +36,13 @@ export const TEMPLATES: TemplateDefinition[] = [
     badge: 'Mobile Optimized',
     bestFor: 'High-volume senders & Tech Support',
   },
+  {
+    id: 'banner-showcase',
+    name: 'Promotional Showcase',
+    description: 'Prominent brand header with clean structured details below. Ideal for campaigns and announcements.',
+    badge: 'CTA Focus',
+    bestFor: 'Marketing, Product Launches & Events',
+  },
 ];
 
 export const FONT_OPTIONS = [
